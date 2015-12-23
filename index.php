@@ -1,6 +1,5 @@
 <pre><?php
-$filename = './246435084856_elasticloadbalancing_ap-southeast-1_sportskeeda-new_20151214T0000Z_54.169.126.87_ge4j0a9a.log';
-
+require_once('./config.php');
 $latency_threshold = [0, 100, 1000];
 
 $handle = fopen($filename, "r");
@@ -25,11 +24,15 @@ if ($handle) {
 } 
 
 function get_line_from_raw($line) {
- $status_code_to_color_class = array('200' => 'good', '301' => 'warn', '302' => 'warn', '404' => 'err', '500' => 'err');
  $return_string = date("D d M Y h:i:s", strtotime($line[0])).' | '.$line[3].' | '.(floatval($line[4]) * 1000).' + '.(floatval($line[5]) * 1000).' + '.(floatval($line[6]) * 1000).' | ';
+ global $status_code_to_color_class;
  if(isset($status_code_to_color_class[$line[7]])) {
+  $return_string .= '<span class="'.$status_code_to_color_class[$line[7]].'">'.$line[7].'</span>';
  }
-        $return_string .= $line[7].' '.$line[8].' | '.$line[9].' &darr; | '.$line[10].' &uarr; '.
+ else {
+  $return_string .= $line[7];
+ }
+        $return_string .= ' '.$line[8].' | '.$line[9].' &darr; | '.$line[10].' &uarr; '.
         ' | <b>'.$line[11].
         '</b> '.$line[12].' | ';
  return $return_string;
