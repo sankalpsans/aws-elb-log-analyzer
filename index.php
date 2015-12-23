@@ -1,5 +1,6 @@
 <pre><?php
-require_once('./config.php');
+require_once('config.php');
+require_once('vendor/autoload.php');
 $latency_threshold = [0, 100, 1000];
 
 $handle = fopen($filename, "r");
