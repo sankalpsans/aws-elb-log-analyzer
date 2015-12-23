@@ -2,17 +2,18 @@
 Log analyzer for AWS Elastic Load Balancer, built from ground-up in PHP. 
 
 #Usage
-Since this "library" is still uner develpoment, the process of reading log files is to 
-*Dump the log file somewhere on the system
-*Point the `$filename` variable in index.php to that file and running the file index.php on a browser.
-*Create a file `secrets.php` in root directory of the project with following piece of code
+Since this "library" is still under develpoment, the process of reading log files is to 
+
+* Dump the log file somewhere on the system
+* Point the `$filename` variable in config.php to that file and running the file index.php on a browser.
+* Create a file `secrets.php` in root directory of the project with following piece of code
 ```
 <?php
 define('AWS_KEY', "XYZ");
 define('AWS_SECRET', "SECRET");
 
 ```
-*Remember to replace `XYZ` and `SECRET` with corresponding values provided by AWS IAM console.
+Note: Remember to replace `XYZ` and `SECRET` with corresponding values provided by AWS IAM console.
 
 #Plans
 I plan to build this as a near-realtime log analyzer, will probably host is somewhere for people to use it.
